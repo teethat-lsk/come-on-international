@@ -1,0 +1,63 @@
+[
+  {
+    "name": "BEARING",
+    "icon": "bearing-icon.png",
+    "examples": ["ลูกปืนรถยนต์", "เม็ดลูกปืน", "จารบีลูกปืน"]
+  },
+  {
+    "name": "BELTS",
+    "icon": "belt-icon.png",
+    "examples": [
+      "สายพานร่องวี",
+      "สายพานไทม์มิ่ง",
+      "สายพานกลม",
+      "สายพานลำเลียง"
+    ]
+  },
+  {
+    "name": "BOLT & SCREW",
+    "icon": "screw-bolt-icon.png",
+    "examples": ["น็อตมิล", "น็อตและสกรู Plastic/Stainless", "หัวน็อตทุกชนิด"]
+  },
+  {
+    "name": "PROTECTIVE TOOLS",
+    "icon": "protection-icon.png",
+    "examples": [
+      "หมวกและรองเท้าเซฟตี้",
+      "หน้ากากอนามัย & Face Shield"
+    ]
+  },
+  {
+    "name": "CAR's PART",
+    "icon": "car-part-icon.png",
+    "examples": [
+      "น้ำมันและของเหลว",
+      "อุปกรณ์งานเบรค",
+      "อะไหล่รถยนต์"
+    ]
+  },
+  {
+    "name": "ELECTRICAL DEVICES",
+    "icon": "electrical-icon.png",
+    "examples": ["สายไฟ", "เบรกเกอร์", "สวิทซ์", "หลอดไฟ"]
+  },
+  {
+    "name": "HARDWARE TOOLS",
+    "icon": "hardware-icon.png",
+    "examples": ["ไขควงทุกชนิด", "คีมทุกชนิด", "ค้อนทุกชนิด", "ดอกสว่าน"]
+  },
+  {
+    "name": "CHEMICAL",
+    "icon": "chemical-icon.png",
+    "examples": ["กรดชนิดต่างๆ","สารสกัลต่างๆ","สราเคมีในอุสาหกรรม"]
+  },
+  {
+    "name": "MEDICINE",
+    "icon": "medicine-icon.png",
+    "examples": [
+      "ยาสามัญประจำบ้าน",
+      "สำลี/ผ้าก๊อซ/ถุงมือ",
+      "พลาสเตอร์ยา"
+    ]
+  }
+]
