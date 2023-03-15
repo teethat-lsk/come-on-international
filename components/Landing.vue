@@ -129,7 +129,7 @@
         <Pagination />
       </template>
     </Carousel>
-    <a v-show="false" id="download" download="Come-On International Catalogue.pdf" :href="pdf"> </a>
+    <a v-show="false" id="download" download :href="pdf"> </a>
     <a v-show="false" id="open" :href="pdf" target="_blank"> </a>
   </div>
 </template>

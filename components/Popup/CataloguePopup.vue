@@ -40,7 +40,7 @@
           v-show="false"
           id="downloadPDF"
           :href="pdf"
-          download="Come-On International Catalogue.pdf"
+          download
         >
         </a>
       </div>
