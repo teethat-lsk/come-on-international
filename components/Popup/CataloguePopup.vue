@@ -51,7 +51,7 @@
 <script setup>
 import BackDrop from './BackDrop.vue';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
-import pdf from '@/static/Come-On_International.pdf';
+import pdf from '.output/public/_nuxt/Come-On_International.6de01b42.pdf';
 import Qrcode from 'qrcode.vue';
 
 const URL = await downloadURL()
