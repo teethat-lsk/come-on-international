@@ -129,7 +129,7 @@
         <Pagination />
       </template>
     </Carousel>
-    <a v-show="false" id="download" download href="/Come-On_International.pdf"> </a>
+    <a v-show="false" id="download" download rel="noreferrer noopener" href="/Come-On_International.pdf"> </a>
     <a v-show="false" id="open" href="/Come-On_International.pdf" target="_blank"> </a>
   </div>
 </template>
