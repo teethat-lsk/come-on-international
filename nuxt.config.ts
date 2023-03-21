@@ -14,5 +14,4 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'vercel',
   },
-  modules: ['@nuxtjs/axios'],
 });
