@@ -52,6 +52,8 @@
 <script setup>
 import BackDrop from "./BackDrop.vue";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import Axios from 'axios'
+
 // import pdf from '@/static/Come-On_International.pdf';
 
 import Qrcode from "qrcode.vue";
@@ -66,12 +68,24 @@ const pdf = "/public/Come-On_International.pdf";
 // });
 
 const downloadCatalogue = async () => {
-  document.getElementById("downloadPDF").click();
-  const target = document.getElementById("rerenderTarget");
-  const targetChildrens = target.childNodes;
-  targetChildrens.forEach((node) => {
-    target.replaceChild(node, node);
-  });
+  // document.getElementById("downloadPDF").click();
+  // const target = document.getElementById("rerenderTarget");
+  // const targetChildrens = target.childNodes;
+  // targetChildrens.forEach((node) => {
+  //   target.replaceChild(node, node);
+  // });
+
+  Axios.get("https://firebasestorage.googleapis.com/v0/b/come-on-international.appspot.com/o/Come-On%20International.pdf?alt=media&token=2a4c4566-930b-41f9-953b-cb1f23a25ced", 
+  { responseType: 'blob' , headers:{'Access-Control-Allow-Credentials':true}})
+ .then(response => {
+        const blob = new Blob([response.data], { type: 'application/pdf' })
+        const link = document.createElement('a')
+        link.href = URL.createObjectURL(blob)
+        link.download = "Come-On_International.pdf"
+        link.click()
+        URL.revokeObjectURL(link.href)
+      }).catch(console.error)
+  
 };
 
 const downloadPDF = () => {
