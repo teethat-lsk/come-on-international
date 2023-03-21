@@ -71,7 +71,7 @@ const downloadCatalogue = async() => {
   const target = document.getElementById("rerenderTarget");
   const targetChildrens = target.childNodes;
   targetChildrens.forEach((node) => {
-    target.replaceChild(node);
+    target.replaceChild(node,node);
   });
 };
 
