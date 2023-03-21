@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   routeRules: {
-    "/**" : {ssr:false}
+    '/**': { ssr: false },
   },
   ssr: false,
   css: ['~/assets/css/main.css'],
@@ -12,7 +12,7 @@ export default defineNuxtConfig({
     },
   },
   nitro: {
-    preset: 'vercel'
+    preset: 'vercel',
   },
-
+  modules: ['@nuxtjs/axios'],
 });
