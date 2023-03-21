@@ -11,8 +11,8 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  nitro: {
-    preset: 'vercel'
-  },
+  // nitro: {
+  //   preset: 'vercel'
+  // },
 
 });
