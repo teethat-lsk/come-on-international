@@ -72,6 +72,8 @@ const closeAllPopup = () => {
   cataloguePopupActive.value = false;
   contactPopupActive.value = false;
   isLoading.value = false;
+  freezeScrolling(false)
+  window.location.reload()
 };
 
 const scrollTo = (position) => {
