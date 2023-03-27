@@ -1,8 +1,11 @@
 <template>
-  <div class="relative bg-secondary"> 
+  <div class="relative bg-secondary">
+    <Loading v-if="isLoading" class="absolute" />
     <CataloguePopup
       @closePopup="disablePopup"
       v-if="cataloguePopupActive"
+      @downloadClick="openLoadingPopup"
+      @downloadSuccess="closeAllPopup"
       class="absolute"
     />
     <ContactPopup
@@ -12,7 +15,10 @@
     />
     <TopBar @buttonClicked="(type) => enablePopup(type)" class="sticky top-0" />
     <section id="rerenderTarget" class="px-12 mobile:px-3">
-      <Landing />
+      <Landing
+        @downloadClick="openLoadingPopup"
+        @downloadSuccess="closeAllPopup"
+      />
       <Divider />
       <CategoryList />
       <Divider />
@@ -32,6 +38,7 @@ import ContactPopup from '~~/components/Popup/ContactPopup.vue';
 import CategoryCard from '~~/components/CategoryCard.vue';
 import CategoryList from '~~/components/CategoryList.vue';
 import ProductList from '~~/components/ProductList.vue';
+import Loading from '~~/components/Popup/Loading.vue';
 
 const freezeScrolling = (isEnabled) => {
   if (isEnabled) {
@@ -42,6 +49,7 @@ const freezeScrolling = (isEnabled) => {
 };
 const cataloguePopupActive = ref(false);
 const contactPopupActive = ref(false);
+const isLoading = ref(false);
 const enablePopup = (type) => {
   console.log('>>>', type);
   freezeScrolling(true);
@@ -56,12 +64,19 @@ const disablePopup = () => {
   cataloguePopupActive.value = false;
   contactPopupActive.value = false;
 };
+const openLoadingPopup = () => {
+  console.log('openLoadingPopup');
+  isLoading.value = true;
+};
+const closeAllPopup = () => {
+  cataloguePopupActive.value = false;
+  contactPopupActive.value = false;
+  isLoading.value = false;
+};
 
 const scrollTo = (position) => {
   document.getElementById(position).scrollIntoView(true);
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

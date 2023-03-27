@@ -46,6 +46,8 @@
 import BackDrop from './BackDrop.vue';
 import Axios from 'axios';
 
+const emit = defineEmits(['downloadClick','downloadSuccess'])
+
 const URL = await downloadURL();
 
 
@@ -69,6 +71,7 @@ const forceFileDownload = (response, title) => {
   link.click();
 };
 const downloadWithAxios = () => {
+  emit('downloadClick')
   Axios({
     method: 'GET',
     url: URL,
@@ -77,7 +80,7 @@ const downloadWithAxios = () => {
     .then((response) => {
       forceFileDownload(response, 'ComeOn-International.pdf');
       if(response.status == 200){
-        console.log("DOWNLOAD COMPLETE")
+       emit('downloadSuccess')
       }
     })
     .catch(() => console.log('error occured'));

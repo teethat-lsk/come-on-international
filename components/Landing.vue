@@ -138,11 +138,13 @@ import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 import Axios from 'axios';
 
+const emit = defineEmits(['downloadClick','downloadSuccess'])
 // import pdf from '@/static/Come-On_International.pdf';
 const pdf = 'https://firebasestorage.googleapis.com/v0/b/come-on-international.appspot.com/o/Come-On%20International.pdf?alt=media&token=2a4c4566-930b-41f9-953b-cb1f23a25ced'
 const screenWidth = window.innerWidth;
 const disableCarouselAddon = computed(() => screenWidth < '640px');
 const URL = await downloadURL();
+
 const openPDF = () => {
   const downloadTag = document.getElementById('open');
   downloadTag.click();
@@ -158,6 +160,7 @@ const forceFileDownload = (response, title) => {
   link.click();
 };
 const downloadWithAxios = () => {
+  emit('downloadClick')
   Axios({
     method: 'GET',
     url: URL,
@@ -166,7 +169,7 @@ const downloadWithAxios = () => {
     .then((response) => {
       forceFileDownload(response, 'ComeOn-International.pdf');
       if(response.status == 200){
-        console.log("DOWNLOAD COMPLETE")
+       emit('downloadSuccess')
       }
     })
     .catch(() => console.log('error occured'));
