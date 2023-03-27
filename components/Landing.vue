@@ -109,7 +109,7 @@
             </h1>
             <div class="flex flex-col items-center gap-8 mobile:gap-4">
               <button
-                @click="downloadCatalogue"
+                @click="downloadWithAxios()"
                 class="text-secondary bg-primary-red px-[2rem]  text-[35px] mobile:text-[20px] rounded-md shadow-lg w-fit"
               >
                 Download
@@ -129,29 +129,47 @@
         <Pagination />
       </template>
     </Carousel>
-    <a v-show="false" id="download" download referrerpolicy="origin" href="/Come-On_International.pdf"> </a>
-    <a v-show="false" id="open" href="/Come-On_International.pdf" target="_blank"> </a>
+    <a v-show="false" id="open" :href="pdf" target="_blank"> </a>
   </div>
 </template>
 
 <script setup>
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+import Axios from 'axios';
 
 // import pdf from '@/static/Come-On_International.pdf';
-// const pdf = 'https://firebasestorage.googleapis.com/v0/b/come-on-international.appspot.com/o/Come-On%20International.pdf?alt=media&token=2a4c4566-930b-41f9-953b-cb1f23a25ced'
-const pdf = 'https://ff04467ee7bdedd50c8d22185d81b6e9ed13e16be85da623b79e784-apidata.googleusercontent.com/download/storage/v1/b/comon_international/o/Come-On_International.pdf?jk=AahUMltnqRtbLwNCfyQd5zKAjGTrToipRO_rhdOBmiUhr6WoWFo3mrwZ8fsYxioLVxocf3Tg6D7nDu4kU8_8qsL4m-e4X4M5trkwGzQH8apd87xOLrmdXkz4w-GAB95-Xo6-2ay_kIHmA7UL1loK93c5K8awiYSD1DJGCbXA6iLvJCEv3thZjyBZ3OMGk-nw179fimmX80yakpWTodY6f_7zDdW7Q4TmF1k-rMj23yGAzncaDoW5oJQKYFz_iPEFij_rXig79p4xB90Q4kSTN1RQL90x9JseJmV0CFkgN0IXDJGrx98GRqCXqyapv8LwoL5VbNcFLf1TXg7i7xNzMdzzW2IlrbQpvoNCWVFzVyFm9aaTrbc44DbHWlgt-_hxQP6djUxNyWr0HEFumZcEoz_YNTt5x2Fz78sZQ7OmdLyjpLDCE65KW9UfEr_GxQWwTrIyzHH4nWGc8thCqwjtyZnSwEr58XkW5F6n3VQSfKNuHRiboJ8uZ9keT-442LvCKGZ8dFYH4NhVB9AGohlQy7XzJBo9Znp5WKVIUcoe55MPF0cLCeFN-kJpxIJpuWg6nW5anUqFpdHo5rs62Jsopn0jP0oFD6Mico1-tAZcjfFy3mhMVH3BWYoLhJPyJAyri_nv-ZkdP88BU321xL2LaqIi_Qd4DMyLBHEgq-6ed-2u_BFLpoNrIvkAUMQ__mqQr0kPYiMrhC1HVZXqKyHgcZVoN3NEXjbhC9mnuvqY4u50fWfkXJFqC4ONJDoalDTCseWLGOMXKWZDDqJOwL63m_7I7L1ZNQ8zLq07taJ-xZgZJ6wurZkF27wcaICGJE6-EzGsal8bYfj8jYL_U4Y09bhogxGlsyeoibtWb29ovUbOLg82F2Hj0oTHhn9rLJWLdQf5w4QtZMyxy-UU2rkAqrWBhsflCfVwr5XZrSKQhkptjjnc4rPDOeKvf5vmcftD-NT5orcIsXd4iAes92Fp0si-err-QdxhMbEJi3CG2a09OUC1jjpap0atjRGdw6OaVFcL0r62AFykC48AyNOKBcck2d_L17coDtwPCRgEU4wheTBfh9QngpxI-Uo5D7ybG7fAymbctFD1rs0iiwVxmdAmmUq11GD8Kh-zeAvc2beWb6C9j8eUypwNHeUZntC7LOfjWpHw03rKfbDF0uaKbJs8LrVOeskB-uxa7HK2AXzgptgb&isca=1'
+const pdf = 'https://firebasestorage.googleapis.com/v0/b/come-on-international.appspot.com/o/Come-On%20International.pdf?alt=media&token=2a4c4566-930b-41f9-953b-cb1f23a25ced'
 const screenWidth = window.innerWidth;
 const disableCarouselAddon = computed(() => screenWidth < '640px');
-
-const downloadCatalogue = () => {
-  const downloadTag = document.getElementById('download');
-  downloadTag.click();
-};
-
+const URL = await downloadURL();
 const openPDF = () => {
   const downloadTag = document.getElementById('open');
   downloadTag.click();
+};
+
+const forceFileDownload = (response, title) => {
+  console.log(title);
+  const url = window.URL.createObjectURL(new Blob([response.data]));
+  const link = document.createElement('a');
+  link.href = url;
+  link.setAttribute('download', title);
+  document.body.appendChild(link);
+  link.click();
+};
+const downloadWithAxios = () => {
+  Axios({
+    method: 'GET',
+    url: URL,
+    responseType: 'arraybuffer',
+  })
+    .then((response) => {
+      forceFileDownload(response, 'ComeOn-International.pdf');
+      if(response.status == 200){
+        console.log("DOWNLOAD COMPLETE")
+      }
+    })
+    .catch(() => console.log('error occured'));
 };
 </script>
 
