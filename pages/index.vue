@@ -65,12 +65,10 @@ const disablePopup = () => {
   contactPopupActive.value = false;
 };
 const openLoadingPopup = () => {
-  console.log('openLoadingPopup');
   isLoading.value = true;
 };
 const closeAllPopup = () => {
   cataloguePopupActive.value = false;
-  contactPopupActive.value = false;
   isLoading.value = false;
   freezeScrolling(false)
   window.location.reload()

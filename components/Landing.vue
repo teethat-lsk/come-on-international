@@ -104,13 +104,15 @@
             class="mobile:hidden"
           />
           <div class="flex flex-col gap-8 mobile:gap-4">
-            <h1 class="text-primary-red text-[96px] mobile:text-[40px] font-bold">
+            <h1
+              class="text-primary-red text-[96px] mobile:text-[40px] font-bold"
+            >
               OUR CATALOGUE
             </h1>
             <div class="flex flex-col items-center gap-8 mobile:gap-4">
               <button
                 @click="downloadWithAxios()"
-                class="text-secondary bg-primary-red px-[2rem]  text-[35px] mobile:text-[20px] rounded-md shadow-lg w-fit"
+                class="text-secondary bg-primary-red px-[2rem] text-[35px] mobile:text-[20px] rounded-md shadow-lg w-fit"
               >
                 Download
               </button>
@@ -172,7 +174,7 @@ const downloadWithAxios = () => {
        emit('downloadSuccess')
       }
     })
-    .catch(() => console.log('error occured'));
+    .catch(() => {emit('downloadSuccess')});
 };
 </script>
 
