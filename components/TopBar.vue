@@ -36,17 +36,17 @@
     >
       <button
         @click="$emit('buttonClicked', 'CATALOGUE')"
-        class="bg-secondary px-4 py-1 rounded-xl flex justify-end items-center gap-2 max-h-[60px] min-w-fit mobile:w-fit"
+        class="bg-secondary px-4 py-1 rounded-xl flex justify-start items-center gap-2 max-h-[60px] min-full"
       >
-        <span class="text-black text-2xl mobile:text-lg font-bold w-fit">Catalogue</span>
         <img src="~/assets/images/catalogue-logo.png" alt="Catalog logo" class="mobile:h-[20px]" />
+        <span class="text-black text-2xl mobile:text-lg font-bold w-fit">Catalogue</span>
       </button>
       <button
         @click="$emit('buttonClicked', 'CONTACT')"
-        class="bg-secondary px-4 py-1 rounded-xl flex justify-end items-center gap-2 max-h-[60px] min-w-fit mobile:w-fit"
+        class="bg-secondary px-4 py-1 rounded-xl flex justify-start items-center gap-2 max-h-[60px] w-full"
       >
+        <img src="~/assets/images/contact-logo.png" alt="Contact logo" class="mobile:h-[25px] mr-[2px]" />
         <span class="text-black text-2xl mobile:text-lg font-bold w-fit">Contact</span>
-        <img src="~/assets/images/contact-logo.png" alt="Contact logo" class="mobile:h-[25px]" />
       </button>
     </div>
   </nav>
