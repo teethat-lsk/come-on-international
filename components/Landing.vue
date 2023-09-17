@@ -131,7 +131,7 @@
         <Pagination />
       </template>
     </Carousel>
-    <a v-show="false" id="open" :href="pdf" target="_blank" download=""> </a>
+    <a v-show="false" id="open" :href="pdf" target="_blank"> </a>
   </div>
 </template>
 
