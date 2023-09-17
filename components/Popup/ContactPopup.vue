@@ -49,7 +49,7 @@
             alt=""
             class="w-[80px] mobile:w-[40px]"
           />
-          <span class="text-[48px] mobile:text-[20px]">sami.comeon@gmail.com</span>
+          <span class="text-[48px] mobile:text-[18px]">sami.comeon@gmail.com</span>
         </div>
       </div>
     </div>

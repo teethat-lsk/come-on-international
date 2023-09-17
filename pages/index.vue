@@ -51,7 +51,6 @@ const cataloguePopupActive = ref(false);
 const contactPopupActive = ref(false);
 const isLoading = ref(false);
 const enablePopup = (type) => {
-  console.log('>>>', type);
   freezeScrolling(true);
   if (type === 'CATALOGUE') {
     cataloguePopupActive.value = true;

@@ -3,15 +3,11 @@
     <Carousel :wrap-around="true" :autoplay="3000">
       <Slide index="0">
         <div>
-          <h1
-            class="text-left text-[64px] mobile:text-[20px] text-primary-red mb-4"
-          >
+          <h1 class="text-left text-[64px] mobile:text-[20px] text-primary-red mb-4">
             COME ON INTERNATIONAL,CO.,LTD. <br />
             บริษัท คัมออน อินเตอร์เนชั่นแนล จำกัด
           </h1>
-          <div
-            class="flex gap-12 mobile:gap-10 justify-center mobile:items-center"
-          >
+          <div class="flex gap-12 mobile:gap-10 justify-center mobile:items-center">
             <div class="flex-1 flex flex-col gap-12">
               <h1 class="text-left text-[40px] mobile:text-[17px] text-black">
                 จำหน่ายสินค้างานรถยนต์ทุกชนิด <br />
@@ -57,9 +53,7 @@
             class="mobile:hidden"
           />
           <div class="flex flex-col item-center gap-4">
-            <h1
-              class="text-primary-red text-[96px] mobile:text-[40px] font-bold"
-            >
+            <h1 class="text-primary-red text-[96px] mobile:text-[40px] font-bold">
               CONTACT US
             </h1>
             <div
@@ -87,9 +81,7 @@
                   alt=""
                   class="w-[80px] mobile:w-[40px]"
                 />
-                <span class="text-[48px] mobile:text-[20px]"
-                  >sami.comeon@gmail.com</span
-                >
+                <span class="text-[48px] mobile:text-[20px]">sami.comeon@gmail.com</span>
               </div>
             </div>
           </div>
@@ -104,18 +96,16 @@
             class="mobile:hidden"
           />
           <div class="flex flex-col gap-8 mobile:gap-4">
-            <h1
-              class="text-primary-red text-[96px] mobile:text-[40px] font-bold"
-            >
+            <h1 class="text-primary-red text-[96px] mobile:text-[40px] font-bold">
               OUR CATALOGUE
             </h1>
             <div class="flex flex-col items-center gap-8 mobile:gap-4">
-              <button
+              <!-- <button
                 @click="downloadWithAxios()"
                 class="text-secondary bg-primary-red px-[2rem] text-[35px] mobile:text-[20px] rounded-md shadow-lg w-fit"
               >
                 Download
-              </button>
+              </button> -->
               <button
                 @click="openPDF"
                 class="text-secondary bg-primary-red px-[2rem] text-[35px] mobile:text-[20px] rounded-md shadow-lg w-fit"
@@ -136,45 +126,49 @@
 </template>
 
 <script setup>
-import 'vue3-carousel/dist/carousel.css';
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
-import Axios from 'axios';
+import "vue3-carousel/dist/carousel.css";
+import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
+import Axios from "axios";
+import url from "@/constant/pdfLink";
 
-const emit = defineEmits(['downloadClick','downloadSuccess'])
-import pdf from '@/src/Come-On_International.pdf';
+const emit = defineEmits(["downloadClick", "downloadSuccess"]);
+// import pdf from '@/src/Come-On_International.pdf';
+// const pdf = 'https://drive.google.com/file/d/19RcC2PyQYI8WSX3A6KbKSW61rlKPNDEj/view?usp=sharing'
 // const pdf = 'https://firebasestorage.googleapis.com/v0/b/come-on-international.appspot.com/o/Come-On%20International.pdf?alt=media&token=2a4c4566-930b-41f9-953b-cb1f23a25ced'
+const pdf = url;
 const screenWidth = window.innerWidth;
-const disableCarouselAddon = computed(() => screenWidth < '640px');
+const disableCarouselAddon = computed(() => screenWidth < "640px");
 const URL = await downloadURL();
 
 const openPDF = () => {
-  const downloadTag = document.getElementById('open');
+  const downloadTag = document.getElementById("open");
   downloadTag.click();
 };
 
 const forceFileDownload = (response, title) => {
-  console.log(title);
   const url = window.URL.createObjectURL(new Blob([response.data]));
-  const link = document.createElement('a');
+  const link = document.createElement("a");
   link.href = url;
-  link.setAttribute('download', title);
+  link.setAttribute("download", title);
   document.body.appendChild(link);
   link.click();
 };
 const downloadWithAxios = () => {
-  emit('downloadClick')
+  emit("downloadClick");
   Axios({
-    method: 'GET',
+    method: "GET",
     url: URL,
-    responseType: 'arraybuffer',
+    responseType: "arraybuffer",
   })
     .then((response) => {
-      forceFileDownload(response, 'ComeOn-International.pdf');
-      if(response.status == 200){
-       emit('downloadSuccess')
+      forceFileDownload(response, "ComeOn-International.pdf");
+      if (response.status == 200) {
+        emit("downloadSuccess");
       }
     })
-    .catch(() => {emit('downloadSuccess')});
+    .catch(() => {
+      emit("downloadSuccess");
+    });
 };
 </script>
 

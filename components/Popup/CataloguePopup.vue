@@ -20,7 +20,7 @@
         <span class="text-[40px]">CATALOGUE</span>
       </div>
       <div
-        class="mobile:flex-col mobile:gap-[1rem] absolute bottom-[60px] mobile:bottom-[20px] px-12 w-full h-fit flex flex-row justify-center gap-[3rem]"
+        class="mobile:flex-col mobile:gap-[1rem] absolute bottom-[60px] mobile:bottom-[20px] px-24 w-full h-fit flex flex-row justify-center gap-[3rem]"
       >
         <img
           src="~/assets/images/popup/qr.png"
@@ -31,7 +31,7 @@
           <span class="font-bold text-lg">or</span>
         </div>
         <button
-          @click="downloadWithAxios()"
+          @click="openPDF"
           class="bg-secondary h-fit w-min px-[2rem] text-[35px] font-normal flex-grow py-[0.5rem] rounded-md shadow-lg self-center justify-self-center mobile:text-[15px]"
         >
           Download
@@ -45,6 +45,7 @@
 <script setup>
 import BackDrop from './BackDrop.vue';
 import Axios from 'axios';
+import url from '@/constant/pdfLink'
 
 const emit = defineEmits(['downloadClick','downloadSuccess'])
 
@@ -53,7 +54,7 @@ const URL = await downloadURL();
 
 const downloadCatalogue = async () => {
   const aTag = document.createElement('a');
-  const url = URL;
+  // const url = URL;
   // const aTag = document.getElementById("downloadPDF");
   aTag.download = 'ComeOn-International.pdf';
   aTag.href = url;
@@ -84,6 +85,10 @@ const downloadWithAxios = () => {
       }
     })
     .catch(() => console.log('error occured'));
+};
+const openPDF = () => {
+  const downloadTag = document.getElementById('open');
+  downloadTag.click();
 };
 </script>
 
