@@ -131,7 +131,7 @@
         <Pagination />
       </template>
     </Carousel>
-    <a v-show="false" id="open" :href="pdf" target="_blank"> </a>
+    <a v-show="false" id="open" :href="pdf" target="_blank" download=""> </a>
   </div>
 </template>
 
@@ -141,8 +141,8 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 import Axios from 'axios';
 
 const emit = defineEmits(['downloadClick','downloadSuccess'])
-// import pdf from '@/static/Come-On_International.pdf';
-const pdf = 'https://firebasestorage.googleapis.com/v0/b/come-on-international.appspot.com/o/Come-On%20International.pdf?alt=media&token=2a4c4566-930b-41f9-953b-cb1f23a25ced'
+import pdf from '@/src/Come-On_International.pdf';
+// const pdf = 'https://firebasestorage.googleapis.com/v0/b/come-on-international.appspot.com/o/Come-On%20International.pdf?alt=media&token=2a4c4566-930b-41f9-953b-cb1f23a25ced'
 const screenWidth = window.innerWidth;
 const disableCarouselAddon = computed(() => screenWidth < '640px');
 const URL = await downloadURL();

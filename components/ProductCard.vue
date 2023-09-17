@@ -41,8 +41,11 @@
       </div>
     </div>
 
-    <div v-if="index == 1" class="flex justify-center gap-[10%] mobile:flex-col mobile:gap-4">
-    <div class="hidden mobile:block">
+    <div
+      v-if="index == 1"
+      class="flex justify-center gap-[10%] mobile:flex-col mobile:gap-4"
+    >
+      <div class="hidden mobile:block">
         <h1 class="text-[64px] mobile:text-[32px]">
           {{ product.title }}
         </h1>
@@ -61,9 +64,7 @@
               class="rounded-xl shadow-lg shadow-black/40"
             />
           </div>
-          <div
-            class="absolute top-[50%] translate-y-[-45%] translate-x-[-15px]"
-          >
+          <div class="absolute top-[50%] translate-y-[-45%] translate-x-[-15px]">
             <img
               src="../assets/images/product/odd-product-bg.png"
               alt="odd-product-bg"
@@ -94,10 +95,7 @@ interface Props {
 const props = defineProps<Props>();
 
 const getUrl = (path: string) => {
-  return new URL(
-    `/assets/images/product/${path}`,
-    import.meta.url
-  ).href.toString();
+  return new URL(`/assets/images/product/${path}`, import.meta.url).href.toString();
 };
 </script>
 
